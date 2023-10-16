@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "PerssMain\\Src\\": "./src/",
+            "PerssMain\\Tests\\": "./tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "require": {
+        "ext-bcmath": "*"
+    }
+}

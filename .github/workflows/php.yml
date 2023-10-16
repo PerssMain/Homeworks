@@ -1,0 +1,24 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: php-actions/composer@v6
+        with:
+          php_version: 8.0
+          php_extensions: bcmath
+
+      - name: PHPUnit
+        uses: php-actions/phpunit@v3
+        with:
+          version: 9.6.5
+          php_version: 8.0
+          configuration: phpunit.xml
+          memory_limit: "256M"
+          php_extensions: bcmath
