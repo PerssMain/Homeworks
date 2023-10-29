@@ -1,12 +1,12 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use PerssMain\Src\Homework_7\BlockingCollection;
 use PerssMain\Src\Homework_7\HardStopCommand;
 use PerssMain\Src\Homework_7\Processable;
 use PerssMain\Src\Homework_7\Processor;
 use PerssMain\Src\Homework_7\SoftStopCommand;
 use PerssMain\Src\Homework_7\TestCommand;
+use PHPUnit\Framework\TestCase;
 
 class TreadTest extends TestCase
 {
