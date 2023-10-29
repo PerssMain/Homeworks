@@ -8,7 +8,7 @@ use PerssMain\Src\Homework_7\Processor;
 use PerssMain\Src\Homework_7\SoftStopCommand;
 use PerssMain\Src\Homework_7\TestCommand;
 
-class HomeworkSevenTest extends TestCase
+class TreadTest extends TestCase
 {
     /**
      * Тест проверяет правильность выполнения очереди, что поток запущен и обрабатывает команды.
