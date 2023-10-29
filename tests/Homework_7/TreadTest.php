@@ -1,55 +1,109 @@
 <?php
 
-namespace PerssMain\Tests\Homework_7;
-
-use PerssMain\Src\Homework_4\Commands\Command;
-use PerssMain\Src\Homework_5\IoC;
-use PerssMain\Src\Homework_5\IoCRegister;
-use PerssMain\Src\Homework_7\Runner;
-use PerssMain\Src\Homework_7\ThreadManager;
 use PHPUnit\Framework\TestCase;
-use SplQueue;
+use PerssMain\Src\Homework_7\BlockingCollection;
+use PerssMain\Src\Homework_7\HardStopCommand;
+use PerssMain\Src\Homework_7\Processable;
+use PerssMain\Src\Homework_7\Processor;
+use PerssMain\Src\Homework_7\SoftStopCommand;
+use PerssMain\Src\Homework_7\TestCommand;
 
-class TreadTest extends TestCase
+class HomeworkSevenTest extends TestCase
 {
-    public string $commandDirectory;
-
-    public function setUp(): void
+    /**
+     * Тест проверяет правильность выполнения очереди, что поток запущен и обрабатывает команды.
+     *
+     * @return void
+     */
+    public function testOne(): void
     {
-        $this->commandDirectory = __DIR__ . '/../../src/Homework_7/';
-        parent::setUp();
+        $queue = new BlockingCollection();
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+
+        $processable = new Processable($queue);
+        $processable->setQueue($queue);
+        $processor = new Processor($processable);
+        $processor->evaluaton();
+        $numberOfExecutedCommands = $processor->getNumberOfExecutedCommands();
+
+        $this->assertEquals(
+            5,
+            $numberOfExecutedCommands,
+            'Ожидалось выполнения 5 команд, а выполнилось ' . $numberOfExecutedCommands
+        );
     }
 
-    public function testCommand()
+    /**
+     * Тест проверяет HardStopCommand (после запуска команды поток завершается).
+     *
+     * @return void
+     */
+    public function testTwo(): void
     {
-        $this->assertTrue(empty($status[1]));
+        $queue = new BlockingCollection();
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+        $processable = new Processable($queue);
+
+        $queue->add(new HardStopCommand($processable));
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+        $processable->setQueue($queue);
+
+        $processor = new Processor($processable);
+        $processor->evaluaton();
+        $numberOfExecutedCommands = $processor->getNumberOfExecutedCommands();
+
+        $this->assertEquals(
+            3,
+            $numberOfExecutedCommands,
+            'HardStopCommand неверно работает, ожидалось выполнения 3-х команд, а выполнилось ' . $numberOfExecutedCommands
+        );
     }
 
-    public function testSoftStop()
+    /**
+     * Тест проверяет SoftStopCommand (поток завершается только после того, как все задачи закончились).
+     *
+     * @return void
+     */
+    public function testThree(): void
     {
-        IoC::resolve(IoC::IOC_REGISTER, IoC::IOC_REGISTER, static function () {
-            return new IoCRegister();
-        })->execute();
-        IoC::resolve(IoC::IOC_REGISTER, 'Queue', function () {
-            $queue = new SplQueue();
+        $queue = new BlockingCollection();
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+        $processable = new Processable($queue);
 
-            for ($i = 0; $i < 4; $i++) {
-                $command = $this->createMock(Command::class);
-                $command->expects($this->once())->method('execute');
-                $queue->push($command);
-            }
+        $queue->add(new SoftStopCommand($processable));
+        $processable->setQueue($queue);
 
-            return $queue;
-        })->execute();
+        $processor = new Processor($processable);
+        $processor->evaluaton();
 
-        ThreadManager::start();
-        ThreadManager::setSignalHandlers();
-        ThreadManager::softStop();
+        $numberOfExecutedCommands = $processor->getNumberOfExecutedCommands();
+        $this->assertEquals(
+            3,
+            $numberOfExecutedCommands,
+            'SoftStopCommand неверно работает, ожидалось выполнения 3-х команд, а выполнилось ' . $numberOfExecutedCommands
+        );
 
-        $runner = new Runner();
-        $runner->execute();
+        // Добавим в очередь новые команды и попробуем запустить
+        $queue->add(new TestCommand());
+        $queue->add(new TestCommand());
+        $processable->setQueue($queue);
+
+        $processor = new Processor($processable);
+        $processor->evaluaton();
+
+        $numberOfExecutedCommands = $processor->getNumberOfExecutedCommands();
+        $this->assertEquals(
+            0,
+            $numberOfExecutedCommands,
+            'SoftStopCommand неверно работает, ожидалось выполнения 0 команд, а выполнилось ' . $numberOfExecutedCommands
+        );
     }
 }
-
-
-

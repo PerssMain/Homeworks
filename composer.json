@@ -9,7 +9,6 @@
         "phpunit/phpunit": "^9"
     },
     "require": {
-        "ext-bcmath": "*",
-        "ext-pcntl": "*"
+        "ext-bcmath": "*"
     }
 }
