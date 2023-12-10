@@ -5,7 +5,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use PerssMain\Src\Homework_8\GameServer;
 
-class HomeworkEightTest extends TestCase
+class Homework8Test extends TestCase
 {
     /**
      * Проверка позитивного теста создания группы, авторизации и выполнения действия игры с помощью сервиса авторизацц.
