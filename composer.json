@@ -1,14 +1,15 @@
 {
     "autoload": {
         "psr-4": {
-            "PerssMain\\Src\\": "./src/",
-            "PerssMain\\Tests\\": "./tests/"
+            "ottus\\Src\\": "./src/",
+            "ottus\\Tests\\": "./tests/"
         }
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
     },
     "require": {
-        "ext-bcmath": "*"
+        "ext-bcmath": "*",
+        "firebase/php-jwt": "^6.8"
     }
 }
