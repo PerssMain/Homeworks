@@ -9,7 +9,6 @@
         "phpunit/phpunit": "^9"
     },
     "require": {
-        "ext-bcmath": "*",
-        "firebase/php-jwt": "^6.8"
+        "ext-bcmath": "*"
     }
 }
