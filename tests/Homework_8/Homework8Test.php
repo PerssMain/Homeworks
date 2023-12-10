@@ -1,7 +1,7 @@
 <?php
-namespace PerssMain\Tests\Homework_8;
-
 declare(strict_types=1);
+
+namespace PerssMain\Tests\Homework_8;
 
 use PHPUnit\Framework\TestCase;
 use PerssMain\Src\Homework_8\GameServer;
