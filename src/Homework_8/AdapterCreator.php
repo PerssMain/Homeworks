@@ -4,6 +4,7 @@ namespace PerssMain\Src\Homework_8;
 
 use PerssMain\Src\Homework_2\Objects\UObject;
 use PerssMain\Src\Homework_5\IoC;
+use ReflectionClass;
 
 class AdapterCreator
 {
