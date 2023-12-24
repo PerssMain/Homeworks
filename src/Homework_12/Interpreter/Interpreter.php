@@ -6,7 +6,7 @@ namespace PerssMain\Src\Homework_12\Interpreter;
 
 use ReflectionClass;
 use ReflectionException;
-use PerssMain\Src\Homework_5\IoC;
+use PerssMain\Src\Homework_12\IoC;
 use PerssMain\Src\Homework_12\Exception\InterpretException;
 
 /**
