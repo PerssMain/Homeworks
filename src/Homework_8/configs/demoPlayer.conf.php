@@ -3,10 +3,10 @@
 return [
     'Tank.move' => function ($objectId) {
         /** @var \PerssMain\Src\Homework_8\ObjectsPool $objectPool */
-        $objectPool = \OtusDZ\Src\Dz5IoC\IoC::resolve(\OtusDZ\Src\Dz8Messaging\ObjectsPool::class);
+        $objectPool = \PerssMain\Src\Homework_5\IoC::resolve(\PerssMain\Src\Homework_8\ObjectsPool::class);
         $uObject = $objectPool->getObject($objectId);
-        $adaptedUObject = \OtusDZ\Src\Dz6AdapterGen\AdapterCreator::create(
-            \OtusDZ\Src\Dz2MoveAndRotate\Moves\Movable::class,
+        $adaptedUObject = \PerssMain\Src\Homework_8\AdapterCreator::create(
+            \PerssMain\Src\Homework_8\Moves\Movable::class,
             $uObject
         );
 
