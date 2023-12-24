@@ -2,8 +2,8 @@
 
 namespace PerssMain\Src\Homework_6\classes\matrix;
 
-use classes\reader\ReaderInterface;
-use classes\writer\WriterInterface;
+use PerssMain\Src\Homework_6\classes\reader\ReaderInterface;
+use PerssMain\Src\Homework_6\classes\writer\WriterInterface;
 
 /**
  * Class MatrixAddition
