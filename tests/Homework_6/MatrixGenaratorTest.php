@@ -29,7 +29,7 @@ class MatrixGenaratorTest extends TestCase
                 $matrix,
             ]);
 
-        $matrixGenarator = $this->createMock(MatrixGenarator::class);
+        $matrixGenarator = \Mockery::mock( MatrixGenarator::class )->makePartial();
         $matrixGenarator->__construct($writer);
         $matrixGenarator->shouldReceive('Generate')
             ->twice()
