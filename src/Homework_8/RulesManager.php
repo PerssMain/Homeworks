@@ -2,7 +2,7 @@
 
 namespace PerssMain\Src\Homework_8;
 
-use PerssMain\Src\Homework_8\Commands\Command;
+use PerssMain\Src\Homework_4\Commands\Command;
 
 interface RulesManager
 {
