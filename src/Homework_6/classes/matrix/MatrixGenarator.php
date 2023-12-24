@@ -6,7 +6,6 @@ use PerssMain\Src\Homework_6\classes\writer\WriterInterface;
 
 /**
  * Class MatrixGenarator
- * @package classes\matrix
  */
 class MatrixGenarator
 {

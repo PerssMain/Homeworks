@@ -4,7 +4,6 @@ namespace PerssMain\Src\Homework_6\classes\reader;
 
 /**
  * Class ReadFileMatrixes
- * @package classes\reader
  */
 final class ReadFileMatrixes implements ReaderInterface
 {

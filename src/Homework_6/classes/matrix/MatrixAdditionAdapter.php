@@ -4,7 +4,6 @@ namespace PerssMain\Src\Homework_6\classes\matrix;
 
 /**
  * Class MatrixAdditionAdapter
- * @package classes\matrix
  */
 final class MatrixAdditionAdapter implements MatrixOperationInterface
 {

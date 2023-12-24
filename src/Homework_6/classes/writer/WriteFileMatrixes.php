@@ -4,7 +4,6 @@ namespace PerssMain\Src\Homework_6\classes\writer;
 
 /**
  * Class WriteFileMatrixes
- * @package classes\writer
  */
 final class WriteFileMatrixes implements WriterInterface
 {

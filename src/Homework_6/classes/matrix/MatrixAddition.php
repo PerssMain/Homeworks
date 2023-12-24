@@ -7,7 +7,6 @@ use PerssMain\Src\Homework_6\classes\writer\WriterInterface;
 
 /**
  * Class MatrixAddition
- * @package classes\matrix
  */
 final class MatrixAddition implements MatrixOperationInterface
 {
