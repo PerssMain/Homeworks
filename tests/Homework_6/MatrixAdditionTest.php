@@ -4,6 +4,7 @@ namespace PerssMain\Tests\Homework_6;
 
 use PerssMain\Src\Homework_6\classes\reader\ReaderInterface;
 use PerssMain\Src\Homework_6\classes\writer\WriterInterface;
+use PerssMain\Src\Homework_6\classes\matrix\MatrixAddition;
 use PHPUnit\Framework\TestCase;
 
 /**

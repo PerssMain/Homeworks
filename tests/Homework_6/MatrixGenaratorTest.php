@@ -4,6 +4,7 @@ namespace PerssMain\Tests\Homework_6;
 
 use PerssMain\Src\Homework_6\classes\writer\WriterInterface;
 use PHPUnit\Framework\TestCase;
+use PerssMain\Src\Homework_6\classes\matrix\MatrixGenarator;
 
 /**
  * Class MatrixGenaratorTest
