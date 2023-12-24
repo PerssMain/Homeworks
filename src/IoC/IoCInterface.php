@@ -1,6 +1,6 @@
 <?php
 
-namespace PerssMain\Src\Homework_12;
+namespace PerssMain\Src\IoC;
 
 /**
  * IoC интерфейс.

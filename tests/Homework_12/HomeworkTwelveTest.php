@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use PerssMain\Src\Homework_12\IoC;
+use PerssMain\Src\IoC\IoC;
 use PerssMain\Src\Homework_12\Command\FireCommand;
 use PerssMain\Src\Homework_12\Command\StartMoveCommand;
 use PerssMain\Src\Homework_12\Command\StopMoveCommand;
