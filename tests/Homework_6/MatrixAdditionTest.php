@@ -6,6 +6,7 @@ use PerssMain\Src\Homework_6\classes\reader\ReaderInterface;
 use PerssMain\Src\Homework_6\classes\writer\WriterInterface;
 use PerssMain\Src\Homework_6\classes\matrix\MatrixAddition;
 use PHPUnit\Framework\TestCase;
+use Mockery;
 
 /**
  * Class MatrixGenaratorTest
@@ -18,8 +19,8 @@ class MatrixAdditionTest extends TestCase
      */
     public function testAdd()
     {
-        $reader = $this->createMock(ReaderInterface::class);
-        $writer = $this->createMock(WriterInterface::class);
+        $reader = Mockery::mock(ReaderInterface::class);
+        $writer = Mockery::mock(WriterInterface::class);
 
         $matrixAddition = new MatrixAddition($reader, $writer);
 

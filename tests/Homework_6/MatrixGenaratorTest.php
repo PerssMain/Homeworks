@@ -5,6 +5,7 @@ namespace PerssMain\Tests\Homework_6;
 use PerssMain\Src\Homework_6\classes\writer\WriterInterface;
 use PHPUnit\Framework\TestCase;
 use PerssMain\Src\Homework_6\classes\matrix\MatrixGenarator;
+use Mockery;
 
 /**
  * Class MatrixGenaratorTest
@@ -23,13 +24,14 @@ class MatrixGenaratorTest extends TestCase
             [7, 8, 9]
         ];
 
-        $writer = $this->createMock(WriterInterface::class);
-        $writer->Write([
+        $writer = Mockery::mock(WriterInterface::class);
+        $writer->allows()
+            ->Write([
                 $matrix,
                 $matrix,
             ]);
 
-        $matrixGenarator = \Mockery::mock( MatrixGenarator::class )->makePartial();
+        $matrixGenarator = Mockery::mock(MatrixGenarator::class)->makePartial();
         $matrixGenarator->__construct($writer);
         $matrixGenarator->shouldReceive('Generate')
             ->twice()
