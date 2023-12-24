@@ -24,8 +24,7 @@ class MatrixGenaratorTest extends TestCase
         ];
 
         $writer = $this->createMock(WriterInterface::class);
-        $writer->allows()
-            ->Write([
+        $writer->assertSame([
                 $matrix,
                 $matrix,
             ]);
